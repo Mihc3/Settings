@@ -21,7 +21,7 @@ if (fopen($check, "r")) {
 
 echo '<center>';
 echo '<a href="index.php">Back to <b>game selection page</b></a><br/><br/>';
-echo '<img src="'.$games[$game][2].'" alt="Game selected: <b>'.$games[$game][0].'</b>" /><br/>';
+echo '<img src="'.$images[$game][0].'" alt="Game selected: <b>'.$games[$game][0].'</b>" /><br/>';
 echo '<b>Displaying settings ('.$build.'):</b><br />';
 foreach($files[$game] as $file) {
 	echo '<a href="'.$urls[$game].$build.'/'.$file.'">'.$file.'</a><br />';

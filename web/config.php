@@ -2,14 +2,26 @@
 
 $games = array(
 // Add more games below
-//	# => array("GameName","GN","images/GameLogo.png"),		<=(example)
+//	# => array("GameName","GN"),		<=(example)
 	0 => array("CityVille", "CV", "images/cityville.png"),
 	1 => array("Empires & Allies", "EA", "images/empires-and-allies.png"),
 	2 => array("Treasure Isle", "TI", "images/treasure-isle.jpg"),
 //	3 => array("FarmVille", "FV", "images/farmville.png"), // Unavailable, unknown settings file format (*.xml.gz).
 	4 => array("Adventure World", "AW", "images/adventure-world.png"),
-//	5 => array("MafiaWars2", "MW2", "images/mafiawars2.png"), // Unavailable, file format not supported (*.swf).
-	6 => array("CastleVille", "CV", "images/castleville.png"),
+	5 => array("Mafia Wars 2", "MW2", "images/mafia-wars-2.png"),
+	6 => array("CastleVille", "CaV", "images/castleville.png"),
+);
+
+$images = array(
+// Add more image urls below
+//	# => array("images/Game-logo.png", "images/Game-icon.png"),		<=(example)
+	0 => array("images/cityville.png", "images/cv_icon.png"),
+	1 => array("images/empires-and-allies.png", "images/ea_icon.png"),
+	2 => array("images/treasure-isle.jpg", "images/ti_icon.png"),
+//	3 => array("images/farmville.png", "images/fv_icon.png"), // Unavailable, unknown settings file format (*.xml.gz).
+	4 => array("images/adventure-world.png", "images/aw_icon.png"),
+	5 => array("images/mafia-wars-2.png", "images/mw2_icon.png"),
+	6 => array("images/castleville.png", "images/cav_icon.png"),
 );
 
 $urls = array(
@@ -19,8 +31,8 @@ $urls = array(
 	1 => "http://zynga1-a.akamaihd.net/empire/assets/",
 	2 => "http://assets.treasure.zgncdn.com/prod/",
 //	3 => "http://zynga1-a.akamaihd.net/farmville/xml/gz/",
-	4 => "http://assets.adventure-zc.zgncdn.com/",
-//	5 => "http://mw2.static.zgncdn.com/",
+	4 => "http://assets.adventure-zc.zgncdn.com/", // also: https://zynga1-a.akamaihd.net/adventure/
+	5 => "http://mw2.static.zgncdn.com/",
 	6 => "http://assets.castle.zgncdn.com/",
 );
 
@@ -32,7 +44,7 @@ $files = array(
 	2 => array("gameSettings.xml"),
 //	3 => array("gameSettings.xml.gz"),
 	4 => array("gameSettings.xml", "questSettings.xml", "en_US.xml"),
-//	5 => array("gameSettings.swf","en_US.swf"),
+	5 => array("gameSettings.xml","en_US.xml"),
 	6 => array("gameSettings.xml"),
 );
 
@@ -50,13 +62,14 @@ function hashes($game_index,$url)
 		case 1: // Empires & Allies (https://zynga1-a.akamaihd.net/empire/assets/40463/gameSettings.xml)
 		case 2: // Treasure Isle (https://assets.treasure.zgncdn.com/prod/v31852/gameSettings.xml)
 		case 4: // Adventure Isle (https://zynga1-a.akamaihd.net/adventure/1340/gameSettings.xml)
+		case 5: // Mafia Wars 2 (http://mw2.static.zgncdn.com/v84768/gameSettings.xml)
 		case 6: // CastleVille (http://assets.castle.zgncdn.com/17433/gameSettings.xml)
 		// (assetIndex)
 			$xml = simplexml_load_file($url);
 			echo $xml->assetIndex;
 			break;			
 		default:
-			echo 'Sorry, getting hash strings from '.$games[$game_index][0].' is not available.';
+			echo 'Sorry, getting hash strings from '.($games[$game_index][0] ? $games[$game_index][0] : 'unknown').' is not available.';
 			return;
 	}
 }

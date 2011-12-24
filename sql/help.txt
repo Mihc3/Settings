@@ -1,4 +1,4 @@
- -- versions_full.sql -- 
+ -- versions.sql -- 
 Import this file if you don't have a 'versions' table yet.
 You don't have to apply updates after importing the file.
 
