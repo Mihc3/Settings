@@ -5,8 +5,8 @@
 <center>
 <?php
 error_reporting(0);
-include './mysql.php';
-include './config.php';
+include 'include/mysql.php';
+include 'include/config.php';
 
 sql_connect();
 
@@ -27,14 +27,15 @@ if (fopen($check, "r")) {
 } else header('Location: index.php');
 
 echo '<a href="index.php">Back to <b>game selection page</b></a><br/><br/>';
-echo '<img src="'.$images[$game][0].'" alt="Game selected: <b>'.$games[$game][0].'</b>" /><br/>';
-echo '<table cellpadding=2>';
+echo '<img src="'.$images[$game][0].'" height=110 alt="Game selected: <b>'.$games[$game][0].'</b>" /><br/>';
+echo '<table width=350 cellpadding=2>';
 echo '<tr><th>'.$games[$game][0].' files ('.$build.')</th></tr>';
+if ($game == 3) echo "<tr><td><center><font size=2><i>Save target/page as <b>*.xml</b></i> file and open it with your text editor.</font></center></td></tr>";
 foreach($files[$game] as $file) {
-	echo '<tr><td><a href="'.$urls[$game].$build.'/'.$file.'">'.$file.'</a></td></tr>';
+	echo '<tr><td><a href="'.($game == 3 ? 'decode.php?g='.$game.'&v='.$build.'&f='.$file : $urls[$game].$build.'/'.$file).'">'.$file.'</a></td></tr>';
 }
 echo '<tr><th>MPRO Image Downloader</th></tr>
-		<tr><td><a href="hash.php?g='.$game.'&v='.$build.'">Hash'.$games[$game][1].'.txt</a> (save target as, rename to <i>Hash'.$games[$game][1].'.txt</i>)</td></tr>
+		<tr><td>'.($game == 3 ? '<font color=red>not available</font>' : '<a href="hash.php?g='.$game.'&v='.$build.'">Hash'.$games[$game][1].'.txt</a> (save target as, rename to <i>Hash'.$games[$game][1].'.txt</i>)').'</td></tr>
 	<table>';
 ?>
 </center>

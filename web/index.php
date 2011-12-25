@@ -1,7 +1,7 @@
 <?php
 error_reporting(0);
-include 'config.php';
-include 'mysql.php';
+include 'include/config.php';
+include 'include/mysql.php';
 sql_connect();
 $game = $_GET['g'];
 ?>
