@@ -1,7 +1,7 @@
- -- versions.sql -- 
+ -- versions.sql -- (RECOMMENDED)
 Import this file if you don't have a 'versions' table yet.
 You don't have to apply updates after importing the file.
 
  -- versions_update_24_12_2011.sql -- 
 Import this file if you have a 'versions' table already and would like to keep old records.
-It will make a new column 'game' with default value '0' (game index of CityVille).
+It will make a new column 'game' with default value '0', meaning that records belongs to CityVille.
