@@ -10,8 +10,8 @@ $games = array(
 	4 => array("Adventure World", "AW"),
 	5 => array("Mafia Wars 2", "MW2"),
 	6 => array("CastleVille", "CaV"),
-//	7 => array("Café World", "CW", ""),
-//	8 => array("Pioneer Trail", "PT", ""),
+//	7 => array("Cafï¿½ World", "CW"),
+//	8 => array("Pioneer Trail", "PT"),
 );
 
 $images = array(
