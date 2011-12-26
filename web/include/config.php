@@ -3,13 +3,15 @@
 $games = array(
 // Add more games below
 //	# => array("GameName","GN"),		<=(example)
-	0 => array("CityVille", "CV", "images/cityville.png"),
-	1 => array("Empires & Allies", "EA", "images/empires-and-allies.png"),
-	2 => array("Treasure Isle", "TI", "images/treasure-isle.jpg"),
-	3 => array("FarmVille", "FV", "images/farmville.png"),
-	4 => array("Adventure World", "AW", "images/adventure-world.png"),
-	5 => array("Mafia Wars 2", "MW2", "images/mafia-wars-2.png"),
-	6 => array("CastleVille", "CaV", "images/castleville.png"),
+	0 => array("CityVille", "CV"),
+	1 => array("Empires & Allies", "EA"),
+	2 => array("Treasure Isle", "TI"),
+	3 => array("FarmVille", "FV"),
+	4 => array("Adventure World", "AW"),
+	5 => array("Mafia Wars 2", "MW2"),
+	6 => array("CastleVille", "CaV"),
+//	7 => array("Café World", "CW", ""),
+//	8 => array("Pioneer Trail", "PT", ""),
 );
 
 $images = array(
@@ -22,6 +24,8 @@ $images = array(
 	4 => array("images/adventure-world.png", "images/aw_icon.png"),
 	5 => array("images/mafia-wars-2.png", "images/mw2_icon.png"),
 	6 => array("images/castleville.png", "images/cav_icon.png"),
+// 	7 => array(),
+//	8 => array(),
 );
 
 $urls = array(
@@ -34,6 +38,8 @@ $urls = array(
 	4 => "http://assets.adventure-zc.zgncdn.com/", // also: https://zynga1-a.akamaihd.net/adventure/
 	5 => "http://mw2.static.zgncdn.com/",
 	6 => "http://assets.castle.zgncdn.com/",
+// 	7 => array(),
+//	8 => array(),
 );
 
 $files = array(
@@ -48,6 +54,8 @@ $files = array(
 	4 => array("gameSettings.xml", "questSettings.xml", "en_US.xml"),
 	5 => array("gameSettings.xml","en_US.xml"),
 	6 => array("gameSettings.xml"),
+// 	7 => array(),
+//	8 => array("dialogs.xmlgz"),
 );
 
 function hashes($game_index,$url)
@@ -68,12 +76,8 @@ function hashes($game_index,$url)
 			$xml = simplexml_load_file($url);
 			echo $xml->assetIndex;
 			break;
-		case 3: // FarmVille (https://zynga1-a.akamaihd.net/farmville/xml/gz/v146514/gameSettings.xml.gz)
-			$file = file_get_contents($url);		
-			$zlib = new ZlibDecompress;
-			$xml = $zlib->inflate(substr($file,2));
-			echo $xml;			
-			break;
+//		case 3: // FarmVille (https://zynga1-a.akamaihd.net/farmville/xml/gz/v146514/gameSettings.xml.gz)
+//			break;
 		default:
 			echo 'Sorry, getting hash strings from '.($games[$game_index][0] ? $games[$game_index][0] : 'unknown').' is not available.';
 			return;

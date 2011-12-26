@@ -5,7 +5,10 @@ include 'include/ZlibDecompress.php';
 $game = $_GET['g'];
 $build = $_GET['v'];
 $file = $_GET['f'];
-if (!isset($game) || !isset($build) || !isset($file)) header('Location: index.php');
+if (!isset($game) || !isset($build)) header('Location: index.php');
 //echo '<title>Hash'.$games[$game][1].'</title>';
-hashes($game,$urls[$game].$build.'/'.($file ? $file : $files[$game][0]));
+$xmlgz = file_get_contents($urls[$game].$build.'/'.($file ? $file : $files[$game][0]));		
+$zlib = new ZlibDecompress;
+$xml = $zlib->inflate(substr($xmlgz,2));
+echo $xml;
 ?>

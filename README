@@ -1,5 +1,5 @@
-Website for accessing Zynga *.xml files and getting Hash**.txt file for MPRO Image Downloader.
+A PHP-based website for accessing Zynga *.xml files and getting Hash**.txt files for MPRO Image Downloader.
 
 Website + MPRO Image Downloader supported games:
-Fully: CityVille, Empires & Allies, Treasure Isle, Adventure World, Mafia Wars 2, CastleVille
-Partially: FarmVille
+ - fully: CityVille, Empires & Allies, Treasure Isle, Adventure World, Mafia Wars 2, CastleVille
+ - partially: FarmVille
