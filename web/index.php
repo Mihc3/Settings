@@ -1,3 +1,4 @@
+<!-- Copyright (c) Settings (https://github.com/Mihapro/Settings) -->
 <?php
 error_reporting(0);
 include 'include/config.php';

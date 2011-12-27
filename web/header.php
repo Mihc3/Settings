@@ -1,3 +1,4 @@
+<!-- Copyright (c) Settings (https://github.com/Mihapro/Settings) -->
 <html>
 <head>
 <title>Settings</title>
@@ -59,6 +60,6 @@ div#navigation {
 <table class="header">
 <tr><th class="header">
 	<div>Settings - a PHP-based project</div>
-	<div><a class="link" href="https://github.com/Mihapro/settings">https://github.com/Mihapro/settings</a></div>
+	<div><a class="link" href="https://github.com/Mihapro/Settings">https://github.com/Mihapro/Settings</a></div>
 </th></tr>
 <tr><td class="main">

@@ -1,3 +1,4 @@
+-- Copyright (c) Settings (https://github.com/Mihapro/Settings) --
 -- versions
 ALTER TABLE `versions`
 ADD COLUMN `game`  int(11) NULL FIRST ,

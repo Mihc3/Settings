@@ -1,3 +1,4 @@
+<!-- Copyright (c) Settings (https://github.com/Mihapro/Settings) -->
 <?php
 
 // Set the password for 'empty_db.php' file.
