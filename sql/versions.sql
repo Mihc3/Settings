@@ -33,9 +33,10 @@ CREATE TABLE `versions` (
 -- Records of versions
 -- ----------------------------
 
-INSERT INTO `versions` VALUES ('0', '1', '79988', '2011-12-24 00:00:00', '0');
+INSERT INTO `versions` VALUES ('0', '1', '80027', '2011-12-28 00:00:00', '0');
 INSERT INTO `versions` VALUES ('1', '1', '40463', '2011-12-24 00:00:00', '0');
 INSERT INTO `versions` VALUES ('2', '1', 'v31852', '2011-12-24 00:00:00', '0');
+INSERT INTO `versions` VALUES ('3', '1', 'v146514', '2011-12-28 00:00:00', '0');
 INSERT INTO `versions` VALUES ('4', '1', '1340', '2011-12-24 00:00:00', '0');
 INSERT INTO `versions` VALUES ('5', '1', 'v84768', '2011-12-24 00:00:00', '0');
 INSERT INTO `versions` VALUES ('6', '1', '17433', '2011-12-24 00:00:00', '0');
