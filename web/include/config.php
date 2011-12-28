@@ -1,6 +1,5 @@
 <!-- Copyright (c) Settings (https://github.com/Mihapro/Settings) -->
 <?php
-
 $games = array(
 // Add more games below
 //	# => array("GameName","GN"),		<=(example)
@@ -64,30 +63,10 @@ $files = array(
 //	8 => array("dialogs.xmlgz"),
 );
 
-function hashes($game_index,$url)
-{
-	switch ($game_index)
-	{
-		case 0: // CityVille (http://cityvillefb.static.zgncdn.com/42773/gameSettings.xml)
-		// (assetIndex,assetPackIndex)
-			$xml = simplexml_load_file($url);
-			echo $xml->assetIndex.'<br/>'.$xml->assetPackIndex;
-			break;
-		case 1: // Empires & Allies (https://zynga1-a.akamaihd.net/empire/assets/40463/gameSettings.xml)
-		case 2: // Treasure Isle (https://assets.treasure.zgncdn.com/prod/v31852/gameSettings.xml)
-		case 4: // Adventure Isle (https://zynga1-a.akamaihd.net/adventure/1340/gameSettings.xml)
-		case 5: // Mafia Wars 2 (http://mw2.static.zgncdn.com/v84768/gameSettings.xml)
-		case 6: // CastleVille (http://assets.castle.zgncdn.com/17433/gameSettings.xml)
-		// (assetIndex)
-			$xml = simplexml_load_file($url);
-			echo $xml->assetIndex;
-			break;
-//		case 3: // FarmVille (https://zynga1-a.akamaihd.net/farmville/xml/gz/v146514/gameSettings.xml.gz)
-//			break;
-		default:
-			echo 'Sorry, getting hash strings from '.($games[$game_index][0] ? $games[$game_index][0] : 'unknown').' is not available.';
-			return;
-	}
-}
+$hash_unavailable = array(
+// Only games we cannot get hashes from.
+//	# => 'message',		<=(example)
+	3 => "Unknown location of hashed strings.",
+);
 ?>
 

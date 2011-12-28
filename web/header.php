@@ -48,6 +48,9 @@ a:active {
 a:hover {
 	text-decoration: underline;
 }
+a.gray {
+	color: gray;
+}
 div#navigation {
 	padding-top: 3px;
 	padding-bottom: 3px;
