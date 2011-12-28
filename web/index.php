@@ -15,7 +15,9 @@ if(isset($game)) {
 	echo '<div id="navigation">Back to: <a href="index.php">game selection</a>'.(isset($build) ? ', <a href="index.php?g='.$game.'">build listing</a>' : '').'</div>';
 }
 if(!isset($game)) {	
-	echo '<div style="padding:3px;"><form name="input" action="" method="get">Game:&nbsp;<select name="g">';
+	echo '<div style="padding:3px;">
+			<form name="name" method="get">
+				Game:&nbsp;<select name="g">';
 	foreach($games as $key => $value) { 
 		echo '<option value="'.$key.'">'.$value[0].'</option>';
 	} 
@@ -37,14 +39,16 @@ if(!isset($game)) {
 	// Game logo
 	echo '<div><img src="'.$images[$game][0].'" height=110 alt="Game selected: <b>'.$games[$game][0].'</div>';
 	// Input form
-	echo '<form name="input" action="index.php" method="get">
-				<input type="hidden" name="g" value="'.$game.'"><br/>
+	echo '<div style="padding:3px;">
+			<form name="version" method="get">
+				<input type="hidden" name="g" value="'.$game.'">
 				<center><table>
-				<tr><td>Game:</td><td><b>'.$games[$game][0].'<b></td></tr>
+				<tr><td>Game:</td><td><b>'.$games[$game][0].'</b></td></tr>
 				<tr><td>Version:</td><td><input type="text" name="v" /></td></tr>
 				</table></center>
 				<input type="submit" value="Submit" />
-			</form>';
+			</form>
+		</div>';
 	// Listing known build numbers
 	$query = "SELECT build, date, accessed FROM versions WHERE game='$game' ORDER BY date DESC LIMIT 5";
 	$result = mysql_query($query);
