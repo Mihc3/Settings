@@ -1,14 +1,11 @@
 <!-- Copyright (c) Settings (https://github.com/Mihapro/Settings) -->
 <?php
 
-// Set the password for 'empty_db.php' file.
-//$password = "1234"; NOT SUPPORTED YET
-
 // Database Configuration
 $db_host = "localhost";  // Server
 $db_user = "root";  // Username
-$db_pass = "emo";  // Password
-$db_name = "web";  // Database
+$db_pass = "";  // Password
+$db_name = "";  // Database
 
 function sql_connect()
 {
