@@ -11,11 +11,7 @@ sql_connect();
 $game = (isset($_GET['g']) ? $_GET['g'] : null);
 $build = (isset($_GET['v']) ? $_GET['v'] : null);
 
-/*if(!is_null($game)) {
-	echo '<title>'.$games[$game][0].' settings</title>';
-	echo '<div id="navigation">Back to: <a href="index.php">game selection</a>'.(!is_null($build) ? ', <a href="index.php?g='.$game.'">build listing</a>' : '').'</div>';
-}*/
-if(is_null($game)) {	
+if(is_null($game) || !isset($games[$game])) {	
 	echo '<div style="padding:3px;">
 			<form name="name" method="get">
 				Game:&nbsp;<select name="g">';
@@ -37,19 +33,17 @@ if(is_null($game)) {
 	}
 	echo '</table>';
 } elseif(is_null($build)) {
-	// Game logo
-	echo '<div><img src="'.$images[$game][0].'" height=110 alt="Game selected: <b>'.$games[$game][0].'</div>';
+	// Game Logo
+	if ($images_enabled) echo '<div><img src="'.$images[$game][0].'" height="110" /></div>';
 	// Input form
-	echo '<div style="padding:3px;">
-			<form name="build" method="get">
-				<input type="hidden" name="g" value="'.$game.'">
-				<center><table>
-				<tr><td align=right>Game:</td><td><b>'.$games[$game][0].'</b> (<a href="index.php">change</a>)</td></tr>
-				<tr><td align=right>Build:</td><td><input type="text" name="v" size="11" /></td></tr>
-				</table></center>
-				<input type="submit" value="Submit" />
-			</form>
-		</div>';
+	echo '<form name="build" method="get">
+			<input type="hidden" name="g" value="'.$game.'">
+			<center><table>
+			<tr><td align=right>Game:</td><td><b>'.colored($game,$games,$colors,$colors_enabled).'</b> (<a href="index.php">change</a>)</td></tr>
+			<tr><td align=right>Build:</td><td><input type="text" name="v" size="11" /></td></tr>
+			</table></center>
+			<input type="submit" value="Submit" />
+		</form>';
 	// Listing known build numbers
 	$query = "SELECT build, date, accessed FROM versions WHERE game='$game' ORDER BY date DESC LIMIT 5";
 	$result = mysql_query($query);
@@ -61,8 +55,9 @@ if(is_null($game)) {
 } else { // both $game and $build are set
 	$check = $urls[$game].$build.'/'.$files[$game][0];
 	if($game == 3) {
-		if(!file_exists($check)) {
-			header('Location: ?');
+		$f = file_get_contents($check, NULL, NULL, 0, 2);
+		if($f != 'xÚ') {
+			header('Location: index.php');
 			return;
 		}
 	} else {
@@ -79,9 +74,10 @@ if(is_null($game)) {
 	else
 		mysql_query("UPDATE versions SET accessed = accessed + 1 WHERE game='$game' AND build='$build'");
 
-	echo '<img src="'.$images[$game][0].'" height=110 alt="Game selected: <b>'.$games[$game][0].'</b>" /><br/>';
+	// Game Logo
+	if ($images_enabled) echo '<div><img src="'.$images[$game][0].'" height="110" /></div>';
 	echo '<center><table>
-			<tr><td align=right>Game:</td><td><b>'.$games[$game][0].'</b> (<a class="gray" href="index.php">change</a>)</td></tr>
+			<tr><td align=right>Game:</td><td><b>'.colored($game,$games,$colors,$colors_enabled).'</b> (<a class="gray" href="index.php">change</a>)</td></tr>
 			<tr><td align=right>Build:</td><td><b>'.$build.'</b> (<a class="gray" href="index.php?g='.$game.'">change</a>)</td></tr>
 		</table></center>';
 		
@@ -94,10 +90,9 @@ if(is_null($game)) {
 	echo '</center></td></tr>';
 	echo '</table></center>';
 	echo '<center><table>
-			<tr><th>MPRO Image Downloader</th></tr>
+			<tr><th>MPRO Image Downloader (<a href="http://www.box.com/shared/cyqtv5klon">download</a>)</th></tr>
 			<tr><td>'.(in_array($game,$hash_unavailable) ? '<font color=red>Not available: </font>'.($hash_unavailable[$game] ? $hash_unavailable[$game] : '<no message given>') : '<a href="hash.php?g='.$game.'&v='.$build.'">Hash'.$games[$game][1].'.txt</a> (save target as, rename to <i>Hash'.$games[$game][1].'.txt</i>)').'</td></tr>
 		</table></center>';
 }
-
 include 'footer.php';
 ?>

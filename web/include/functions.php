@@ -9,8 +9,24 @@ function assemble_link($game,$build,$file,$urls) {
 	}
 }
 
-function hashes($game,$urls)
-{
+function colored($game, $games, $colors, $enabled=true) {
+	$game_name = $games[$game][0];
+	if(!$enabled || !isset($colors[$game])) return $game_name;
+	$i = 0;
+	$game_str = '';
+	foreach($colors[$game] as $range => $color) {
+		$range = explode(":",$range);
+		if($i < $range[0]) {
+			$game_str .= substr($game_name,$i,$range[0]-$i);
+			$i += $range[0]-$i;
+		}
+		$game_str .= "<font color='$color'>".substr($game_name,$range[0],$range[1]-$range[0]+1)."</font>";
+		$i += $range[1]-$range[0]+1;
+	}
+	return $game_str;
+}
+
+function hashes($game,$urls) {
 	$url = $urls[$game].$build.'/'.$files[$game][0];
 	switch ($game) {
 		case 0: // CityVille (http://cityvillefb.static.zgncdn.com/42773/gameSettings.xml)

@@ -14,6 +14,21 @@ $games = array(
 //	8 => array("Pioneer Trail", "PT"),
 );
 
+$colors_enabled = true; // You can toggle this: true (enabled) or false (disabled)
+$colors = array(
+//	# => array("i_start:i_end" => "htmlcolor", "i2_start:i2_end" => "htmlcolor2"),		<=(example)
+//	Empires & Allies
+//	0123456789012345
+	0 => array('0:3' => "Gold", '4:8' => "CornflowerBlue"),
+	1 => array('0:6' => "CornflowerBlue", '10:15' => "Orange"),
+	2 => array('0:7' => "Blue", '9:12' => "SeaGreen"),
+	3 => array('0:3' => "Brown", '4:8' => "RoyalBlue"),
+	4 => array('0:14' => "LightBlue"),
+	5 => array('0:4' => "Gray", '6:9' => "RoyalBlue", '11:11' => "Orange"),
+	6 => array('0:5' => "Gold", '6:10' => "Purple"),
+);
+
+$images_enabled = true; // You can toggle this: true (enabled) or false (disabled)
 $images = array(
 // Add more image urls below
 //	# => array("images/Game-logo.png", "images/Game-icon.png"),		<=(example)
