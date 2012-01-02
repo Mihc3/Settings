@@ -56,6 +56,10 @@ div#navigation {
 	padding-bottom: 3px;
 	
 }
+div.notice {
+	font-size: 11px;
+	color: gray;
+}
 </style>
 </head>
 <body>

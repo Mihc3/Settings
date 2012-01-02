@@ -81,7 +81,7 @@ if(is_null($game) || !isset($games[$game])) {
 			<tr><td align=right>Build:</td><td><b>'.$build.'</b> (<a class="gray" href="index.php?g='.$game.'">change</a>)</td></tr>
 		</table></center>';
 		
-	if (in_array($game,$game_messages)) echo '<div><center><font size=2>'.$game_messages[$game].'</font></center></div>';
+	if (isset($game_messages[$game])) echo '<center><div class="notice">'.$game_messages[$game].'</div></center>';
 	echo '<center><table cellpadding=2><tr><td><center>';
 	foreach ($files[$game] as $i => $file) {
 		echo '<a href="'.assemble_link($game,$build,$file,$urls).'">'.$file.'</a>';
@@ -91,7 +91,7 @@ if(is_null($game) || !isset($games[$game])) {
 	echo '</table></center>';
 	echo '<center><table>
 			<tr><th>MPRO Image Downloader (<a href="http://www.box.com/shared/cyqtv5klon">download</a>)</th></tr>
-			<tr><td>'.(in_array($game,$hash_unavailable) ? '<font color=red>Not available: </font>'.($hash_unavailable[$game] ? $hash_unavailable[$game] : '<no message given>') : '<a href="hash.php?g='.$game.'&v='.$build.'">Hash'.$games[$game][1].'.txt</a> (save target as, rename to <i>Hash'.$games[$game][1].'.txt</i>)').'</td></tr>
+			<tr><td>'.(isset($hash_unavailable[$game]) ? '<font color=red>Not available: </font>'.($hash_unavailable[$game] ? $hash_unavailable[$game] : '<no message given>') : '<a href="hash.php?g='.$game.'&v='.$build.'">Hash'.$games[$game][1].'.txt</a> (save target as, rename to <i>Hash'.$games[$game][1].'.txt</i>)').'</td></tr>
 		</table></center>';
 }
 include 'footer.php';
