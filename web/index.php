@@ -1,11 +1,15 @@
 <!-- Copyright (c) Settings (https://github.com/Mihapro/Settings) -->
 <?php
+// Need this for a check in footer.
+$main_page = true;
+
 include 'include/config.php';
 include 'include/functions.php';
 include 'include/mysql.php';
 
 include 'header.php';
 
+session_start();
 sql_connect();
 
 $game = (isset($_GET['g']) ? $_GET['g'] : null);
@@ -21,7 +25,7 @@ if(is_null($game) || !isset($games[$game])) {
 	echo '</select><input type="submit" value="Submit" /></form></div>';
 	echo '<table cellpadding=2>';
 	foreach($games as $key => $value) {
-		$query = "SELECT build, date, accessed FROM versions WHERE game='$key' ORDER BY build DESC LIMIT 1";
+		$query = "SELECT build, date, accessed FROM versions WHERE game='$key' ORDER BY id DESC LIMIT 1";
 		$result = mysql_query($query);		
 		while ($row = mysql_fetch_assoc($result)) {
 			echo '<tr>
@@ -45,8 +49,7 @@ if(is_null($game) || !isset($games[$game])) {
 			<input type="submit" value="Submit" />
 		</form>';
 	// Listing known build numbers
-	$query = "SELECT build, date, accessed FROM versions WHERE game='$game' ORDER BY date DESC LIMIT 5";
-	$result = mysql_query($query);
+	$result = mysql_query("SELECT build, date, accessed FROM versions WHERE game='$game' ORDER BY id DESC LIMIT 5");
 	echo '<center><table cellpadding=2>';
 	while ($row = mysql_fetch_assoc($result)) {
 		echo '<tr><td><a href="index.php?g='.$game.'&v='.$row['build'].'">'.$row['build'].' </a></td><td>Accessed '.$row['accessed'].' '.($row['accessed'] == 1 ? 'time' : 'times').' since '.$row['date'].'.</td></tr>';

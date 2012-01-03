@@ -2,6 +2,7 @@
 <html>
 <head>
 <title>Settings</title>
+<meta http-equiv="refresh" content="3">
 <style type="text/css">
 body,td {
 	font-family: Arial, Sans-Serif;
@@ -47,39 +48,6 @@ a:active {
 }
 a:hover {
 	text-decoration: underline;
-}
-a.gray {
-	color: gray;
-}
-div#navigation {
-	padding-top: 3px;
-	padding-bottom: 3px;
-	
-}
-div.notice {
-	font-size: 11px;
-	color: gray;
-}
-table.list {
-	border-width: 1px;
-	border-color: gray;
-	border-collapse: collapse;
-}
-th.list {
-	background-color: cornflowerblue;
-	color: white;
-}
-td.list {
-	text-align: center;
-}
-a#m {
-	color: green;
-}
-a#e {
-	color: orange;
-}
-a#d {
-	color: red;
 }
 </style>
 </head>

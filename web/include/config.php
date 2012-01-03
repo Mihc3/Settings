@@ -1,5 +1,10 @@
 <!-- Copyright (c) Settings (https://github.com/Mihapro/Settings) -->
 <?php
+// Admin CP ( ../admin/)
+// Website will not be available to visitors until the password is set.
+$admin_password = "";
+$footer_links_visible = true;
+
 $games = array(
 // Add more games below
 //	# => array("GameName","GN"),		<=(example)
