@@ -1,5 +1,7 @@
 <!-- Copyright (c) Settings (https://github.com/Mihapro/Settings) -->
 <?php
+error_reporting(0);
+
 // Need this for a check in footer.
 $main_page = true;
 
