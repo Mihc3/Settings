@@ -26,8 +26,7 @@ function colored($game, $games, $colors, $enabled=true) {
 	return $game_str;
 }
 
-function hashes($game,$urls) {
-	$url = $urls[$game].$build.'/'.$files[$game][0];
+function hashes($game,$url) {
 	switch ($game) {
 		case 0: // CityVille (http://cityvillefb.static.zgncdn.com/42773/gameSettings.xml)
 		// (assetIndex,assetPackIndex)
@@ -46,7 +45,7 @@ function hashes($game,$urls) {
 //		case 3: // FarmVille (https://zynga1-a.akamaihd.net/farmville/xml/gz/v146514/gameSettings.xml.gz)
 //			break;
 		default:
-			echo 'Sorry, getting hash strings from '.($games[$game_index][0] ? $games[$game_index][0] : 'unknown').' is not available.';
+			echo 'Sorry, getting hash strings from '.(isset($games[$game_index][0]) ? $games[$game_index][0] : 'unknown').' is not available.';
 			return;
 	}
 }
