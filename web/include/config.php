@@ -1,5 +1,4 @@
-<!-- Copyright (c) Settings (https://github.com/Mihapro/Settings) -->
-<?php
+<?php // Copyright (c) Settings (https://github.com/Mihapro/Settings)
 // Admin CP ( ../admin/)
 // Website will not be available to visitors until the password is set.
 $admin_password = "";
@@ -15,8 +14,9 @@ $games = array(
 	4 => array("Adventure World", "AW"),
 	5 => array("Mafia Wars 2", "MW2"),
 	6 => array("CastleVille", "CaV"),
-//	7 => array("Café World", "CW"),
-//	8 => array("Pioneer Trail", "PT"),
+	7 => array("Hidden Chronicles", "HC"),
+//	? => array("Café World", "CW"),
+//	? => array("Pioneer Trail", "PT"),
 );
 
 $colors_enabled = true; // You can toggle this: true (enabled) or false (disabled)
@@ -31,6 +31,7 @@ $colors = array(
 	4 => array('0:14' => "LightBlue"),
 	5 => array('0:4' => "Gray", '6:9' => "RoyalBlue", '11:11' => "Orange"),
 	6 => array('0:5' => "Gold", '6:10' => "Purple"),
+	7 => array('0:16' => "Brown")
 );
 
 $images_enabled = true; // You can toggle this: true (enabled) or false (disabled)
@@ -44,8 +45,7 @@ $images = array(
 	4 => array("images/adventure-world.png", "images/aw_icon.png"),
 	5 => array("images/mafia-wars-2.png", "images/mw2_icon.png"),
 	6 => array("images/castleville.png", "images/cav_icon.png"),
-// 	7 => array(),
-//	8 => array(),
+ 	7 => array("images/hidden-chronicles.jpg", "images/hc_icon.gif"),
 );
 
 $game_messages = array(
@@ -63,8 +63,7 @@ $urls = array(
 	4 => "http://assets.adventure-zc.zgncdn.com/", // also: https://zynga1-a.akamaihd.net/adventure/
 	5 => "http://mw2.static.zgncdn.com/",
 	6 => "http://assets.castle.zgncdn.com/",
-// 	7 => "",
-//	8 => "",
+ 	7 => "http://hog.assets.zgncdn.com/",
 );
 
 $files = array(
@@ -79,8 +78,7 @@ $files = array(
 	4 => array("gameSettings.xml", "questSettings.xml", "en_US.xml"),
 	5 => array("gameSettings.xml", "en_US.xml"),
 	6 => array("gameSettings.xml", "en_US.xml"),
-// 	7 => array(),
-//	8 => array("dialogs.xmlgz"),
+ 	7 => array("gameSettings.xml"),
 );
 
 $hash_unavailable = array(
