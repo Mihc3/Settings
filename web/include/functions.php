@@ -1,5 +1,4 @@
-<!-- Copyright (c) Settings (https://github.com/Mihapro/Settings) -->
-<?php
+<?php // Copyright (c) Settings (https://github.com/Mihapro/Settings)
 function assemble_link($game,$build,$file,$urls) {
 	switch($game) {
 		case 3:
@@ -38,6 +37,7 @@ function hashes($game,$url) {
 		case 4: // Adventure Isle (https://zynga1-a.akamaihd.net/adventure/1340/gameSettings.xml)
 		case 5: // Mafia Wars 2 (http://mw2.static.zgncdn.com/v84768/gameSettings.xml)
 		case 6: // CastleVille (http://assets.castle.zgncdn.com/17433/gameSettings.xml)
+		case 7: // Hidden Chronicles (http://hog.assets.zgncdn.com/25419/gameSettings.xml)
 		// (assetIndex)
 			$xml = simplexml_load_file($url);
 			echo $xml->assetIndex;
