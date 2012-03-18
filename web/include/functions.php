@@ -30,7 +30,7 @@ function hashes($game,$url) {
 		case 0: // CityVille (http://cityvillefb.static.zgncdn.com/42773/gameSettings.xml)
 		// (assetIndex,assetPackIndex)
 			$xml = simplexml_load_file($url);
-			echo $xml->assetIndex.'<br/>'.$xml->assetPackIndex;
+			echo str_replace(",","\n",$xml->assetIndex).'<br/>'.str_replace(",","\n",$xml->assetPackIndex);
 			break;
 		case 1: // Empires & Allies (https://zynga1-a.akamaihd.net/empire/assets/40463/gameSettings.xml)
 		case 2: // Treasure Isle (https://assets.treasure.zgncdn.com/prod/v31852/gameSettings.xml)
