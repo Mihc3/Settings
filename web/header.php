@@ -8,7 +8,7 @@ body,td {
 	font-size: 10pt;
 }
 table.header {
-	width: 400px;
+	width: 468px;
 	border-width: 3px;
 	border-spacing: 0px;
 	border-color: black;
@@ -58,6 +58,10 @@ div#navigation {
 }
 div.notice {
 	font-size: 11px;
+	color: gray;
+}
+div.info {
+	font-size: 12px;
 	color: gray;
 }
 table.list {

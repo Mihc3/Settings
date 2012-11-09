@@ -8,6 +8,44 @@ function assemble_link($game,$build,$file,$urls) {
 	}
 }
 
+function getTimeAgoString($postdate) {
+	$nowdate = strtotime(date("Y:m:d H:i:s"));
+	$diff = $nowdate - $postdate;
+	
+	if ($diff >= 60) {
+		$diff = round($diff /= 60);
+		if ($diff >= 60) {
+			$diff = round($diff /= 60);
+			if ($diff >= 24) {
+				$diff = round($diff /= 24);
+				if ($diff == 1) {
+					return $diff." day ago";
+				} else {
+					return $diff." days ago";
+				}
+			} else {
+				if ($diff == 1) {
+					return $diff." hour ago";
+				} else {
+					return $diff." hours ago";
+				}
+			}
+		} else {
+			if ($diff == 1) {
+				return $diff." minute ago";
+			} else {
+				return $diff." minutes ago";
+			}
+		}
+	} else {
+		if ($diff == 1) {
+			return $diff." second";
+		} else {
+			return $diff." seconds";
+		}
+	}
+}
+
 function colored($game, $games, $colors, $enabled=true) {
 	$game_name = $games[$game][0];
 	if(!$enabled || !isset($colors[$game])) return $game_name;
@@ -28,9 +66,21 @@ function colored($game, $games, $colors, $enabled=true) {
 function hashes($game,$url) {
 	switch ($game) {
 		case 0: // CityVille (http://cityvillefb.static.zgncdn.com/42773/gameSettings.xml)
-		// (assetIndex,assetPackIndex)
-			$xml = simplexml_load_file($url);
-			echo str_replace(",","\n",$xml->assetIndex).'<br/>'.str_replace(",","\n",$xml->assetPackIndex);
+			$lines = file($url);
+			foreach ($lines as $line_num => $line) {
+				$pos_start = strpos($line,'"assets/');
+				if (!$pos_start)
+					continue;
+				$pos_end = strpos($line,'"',$pos_start+1);
+				if (!$pos_end)
+					echo "ERROR: URL ending not found (line $line_num)!\n";
+				echo substr($line,$pos_start+1,$pos_end-$pos_start-1)."\n";
+			}
+			
+			// (assetIndex)
+			$xml = simplexml_load_file($url);	
+			echo str_replace(",","",$xml->assetIndex);
+			
 			break;
 		case 1: // Empires & Allies (https://zynga1-a.akamaihd.net/empire/assets/40463/gameSettings.xml)
 		case 2: // Treasure Isle (https://assets.treasure.zgncdn.com/prod/v31852/gameSettings.xml)

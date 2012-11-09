@@ -1,6 +1,7 @@
 <!-- Copyright (c) Settings (https://github.com/Mihapro/Settings) -->
 <?php
 error_reporting(0);
+session_start();
 
 // Need this for a check in footer.
 $main_page = true;
@@ -11,13 +12,15 @@ include 'include/mysql.php';
 
 include 'header.php';
 
-session_start();
 sql_connect();
 
 $game = (isset($_GET['g']) ? $_GET['g'] : null);
 $build = (isset($_GET['v']) ? $_GET['v'] : null);
 
-if(is_null($game) || !isset($games[$game])) {	
+if(is_null($game) || !isset($games[$game])) {
+	foreach($messages as $id => $message) { 
+		echo '<center><div class="notice">'.$message.'</div></center>';
+	}
 	echo '<div style="padding:3px;">
 			<form name="name" method="get">
 				Game:&nbsp;<select name="g">';
@@ -33,7 +36,7 @@ if(is_null($game) || !isset($games[$game])) {
 			echo '<tr>
 					<td><img src="'.$images[$key][1].'" height=20 alt="'.$value[0].'" title="'.$value[0].'" /></td>
 					<td><a href="index.php?g='.$key.'&v='.$row['build'].'">'.$row['build'].' </a></td>
-					<td>Accessed '.$row['accessed'].' '.($row['accessed'] == 1 ? 'time' : 'times').' since '.$row['date'].'.</td>
+					<td><div class="info">Accessed '.$row['accessed'].' '.($row['accessed'] == 1 ? 'time' : 'times').' since '.getTimeAgoString(strtotime($row['date'])).'.</div></td>
 				</tr>';
 		}
 	}
@@ -54,7 +57,10 @@ if(is_null($game) || !isset($games[$game])) {
 	$result = mysql_query("SELECT build, date, accessed FROM versions WHERE game='$game' ORDER BY id DESC LIMIT 5");
 	echo '<center><table cellpadding=2>';
 	while ($row = mysql_fetch_assoc($result)) {
-		echo '<tr><td><a href="index.php?g='.$game.'&v='.$row['build'].'">'.$row['build'].' </a></td><td>Accessed '.$row['accessed'].' '.($row['accessed'] == 1 ? 'time' : 'times').' since '.$row['date'].'.</td></tr>';
+		echo '<tr>
+				<td><a href="index.php?g='.$game.'&v='.$row['build'].'">'.$row['build'].' </a></td>
+				<td><div class="info">Accessed '.$row['accessed'].' '.($row['accessed'] == 1 ? 'time' : 'times').' since '.getTimeAgoString(strtotime($row['date'])).'.</div></td>
+			</tr>';
 	}
 	echo '</table></center>';
 } else { // both $game and $build are set
@@ -78,12 +84,17 @@ if(is_null($game) || !isset($games[$game])) {
 		mysql_query("INSERT INTO versions (game, build, date, accessed) VALUES ('$game','$build', NOW(), '1')");
 	else
 		mysql_query("UPDATE versions SET accessed = accessed + 1 WHERE game='$game' AND build='$build'");
-
+	
+	$result = mysql_query("SELECT * FROM versions WHERE game='$game' AND build='$build'");
+	$buildinfo = mysql_fetch_assoc($result);
+	
 	// Game Logo
 	if ($images_enabled) echo '<div><img src="'.$images[$game][0].'" height="110" /></div>';
 	echo '<center><table>
 			<tr><td align=right>Game:</td><td><b>'.colored($game,$games,$colors,$colors_enabled).'</b> (<a class="gray" href="index.php">change</a>)</td></tr>
 			<tr><td align=right>Build:</td><td><b>'.$build.'</b> (<a class="gray" href="index.php?g='.$game.'">change</a>)</td></tr>
+		</table></center><center><table>
+			<tr><td><div class="info"><b>First time accessed:</b> '.$buildinfo['date'].' ('.getTimeAgoString(strtotime($buildinfo['date'])).')</div></td></tr>
 		</table></center>';
 		
 	if (isset($game_messages[$game])) echo '<center><div class="notice">'.$game_messages[$game].'</div></center>';
@@ -95,8 +106,8 @@ if(is_null($game) || !isset($games[$game])) {
 	echo '</center></td></tr>';
 	echo '</table></center>';
 	echo '<center><table>
-			<tr><th>MPRO Image Downloader (<a href="http://www.box.com/shared/cyqtv5klon">download</a>)</th></tr>
-			<tr><td>'.(isset($hash_unavailable[$game]) ? '<font color=red>Not available: </font>'.($hash_unavailable[$game] ? $hash_unavailable[$game] : '<no message given>') : '<a href="hash.php?g='.$game.'&v='.$build.'">Hash'.$games[$game][1].'.txt</a> (save target as, rename to <i>Hash'.$games[$game][1].'.txt</i>)').'</td></tr>
+			<tr><th>MPRO Image Downloader (<a href="https://github.com/Mihapro/MPRO-Image-Downloader">Repository</a>)</th></tr>
+			<tr><td>'.(isset($hash_unavailable[$game]) ? '<font color=red>Not available: </font>'.($hash_unavailable[$game] ? $hash_unavailable[$game] : '<no message given>') : '<a href="hash.php?g='.$game.'&v='.$build.'">'.$games[$game][1].'.txt</a> (save target as, rename to <i>'.$games[$game][1].'.txt</i>)').'</td></tr>
 		</table></center>';
 }
 include 'footer.php';

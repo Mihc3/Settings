@@ -1,6 +1,7 @@
 <!-- Copyright (c) Settings (https://github.com/Mihapro/Settings) -->
 <?php
-error_reporting(0);
+//error_reporting(0);
+session_start(); 
 
 include '../include/config.php';
 include '../include/functions.php';
@@ -10,7 +11,6 @@ if (!isset($admin_password) or $admin_password == "") header('Location: ../index
 
 if (isset($_POST['password'])) $password = $_POST['password'];
 
-session_start();
 if (!session_is_registered('password')) { 
 	if (!isset($password)) {
 		include '../header.php';

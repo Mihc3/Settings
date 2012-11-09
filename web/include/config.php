@@ -1,22 +1,22 @@
 <?php // Copyright (c) Settings (https://github.com/Mihapro/Settings)
 // Admin CP ( ../admin/)
 // Website will not be available to visitors until the password is set.
-$admin_password = "";
+$admin_password = "test";
 $footer_links_visible = true;
 
 $games = array(
 // Add more games below
 //	# => array("GameName","GN"),		<=(example)
-	0 => array("CityVille", "CV"),
-	1 => array("Empires & Allies", "EA"),
-	2 => array("Treasure Isle", "TI"),
-	3 => array("FarmVille", "FV"),
-	4 => array("Adventure World", "AW"),
-	5 => array("Mafia Wars 2", "MW2"),
-	6 => array("CastleVille", "CaV"),
-	7 => array("Hidden Chronicles", "HC"),
-//	? => array("Café World", "CW"),
-//	? => array("Pioneer Trail", "PT"),
+	0 => array("CityVille", "HashCV"),
+	1 => array("Empires & Allies", "HashEA"),
+	2 => array("Treasure Isle", "HashTI"),
+	3 => array("FarmVille", "HashFV"),
+	4 => array("Adventure World", "HashAW"),
+	5 => array("Mafia Wars 2", "HashMW2"),
+	6 => array("CastleVille", "HashCaV"),
+	7 => array("Hidden Chronicles", "HashHC"),
+//	? => array("Café World", "HashCW"),
+//	? => array("Pioneer Trail", "HashPT"),
 );
 
 $colors_enabled = true; // You can toggle this: true (enabled) or false (disabled)
@@ -46,6 +46,11 @@ $images = array(
 	5 => array("images/mafia-wars-2.png", "images/mw2_icon.png"),
 	6 => array("images/castleville.png", "images/cav_icon.png"),
  	7 => array("images/hidden-chronicles.jpg", "images/hc_icon.gif"),
+);
+
+$messages = array( // These will be displayed on main page
+//	# => "New version is available!",		<=(example)
+	1 => "<div style='border:2px dashed #00CC66;'><b><font color=#00CC66>New version of MPRO Image Downloader (v6.3.0) is available!</font></b><br/>FarmVille URL updated, FarmVille 2 added</div>",
 );
 
 $game_messages = array(

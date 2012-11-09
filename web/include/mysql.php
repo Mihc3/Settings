@@ -3,7 +3,7 @@
 
 // Database Configuration
 $db_host = "localhost";  // Server
-$db_user = "root";  // Username
+$db_user = "";  // Username
 $db_pass = "";  // Password
 $db_name = "";  // Database
 

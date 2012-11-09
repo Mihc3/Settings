@@ -9,6 +9,17 @@ if (isset($_SESSION['password'])) echo '<a href="index.php?action=logout">Logout
 <div>Copyright &copy; Settings (<a href="https://github.com/Mihapro/Settings">https://github.com/Mihapro/Settings</a>)</div>
 </center></td></tr>
 </table>
+<span style="padding-top: 5px;">
+	<script type="text/javascript"><!--
+	google_ad_client = "ca-pub-3787025342320123";
+	/* mptoolsn1 */
+	google_ad_slot = "2149111366";
+	google_ad_width = 468;
+	google_ad_height = 60;
+	//-->
+	</script>
+	<script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js"></script>
+</span>
 </center>
 </body>
 </html>
