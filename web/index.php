@@ -1,6 +1,5 @@
-<!-- Copyright (c) Settings (https://github.com/Mihapro/Settings) -->
-<?php
-error_reporting(0);
+<?php // Copyright (c) Settings (https://github.com/Mihapro/Settings)
+//error_reporting(0);
 session_start();
 
 // Need this for a check in footer.
