@@ -1,7 +1,7 @@
 <?php // Copyright (c) Settings (https://github.com/Mihapro/Settings)
 // Admin CP ( ../admin/)
 // Website will not be available to visitors until the password is set.
-$admin_password = "test";
+$admin_password = "";
 $footer_links_visible = true;
 
 $games = array(
