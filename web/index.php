@@ -18,9 +18,7 @@ $game = (isset($_GET['g']) ? $_GET['g'] : null);
 $build = (isset($_GET['v']) ? $_GET['v'] : null);
 
 if(is_null($game) || !isset($games[$game])) {
-	foreach($messages as $id => $message) { 
-		echo '<center><div class="notice">'.$message.'</div></center>';
-	}
+	echo '<div class="navigation"><b>Main Page</b></div>';
 	echo '<div style="padding:3px;">
 			<form name="name" method="get">
 				Game:&nbsp;<select name="g">';
@@ -42,6 +40,7 @@ if(is_null($game) || !isset($games[$game])) {
 	}
 	echo '</table>';
 } elseif(is_null($build)) {
+	echo '<div class="navigation"><a href="?">Main Page</a> > <b>'.colored($game,$games,$colors,$colors_enabled).'</b></div>';
 	// Game Logo
 	if ($images_enabled) echo '<div><img src="'.$images[$game][0].'" height="110" /></div>';
 	// Input form
@@ -78,7 +77,7 @@ if(is_null($game) || !isset($games[$game])) {
 			return;
 		}
 	}
-	
+	echo '<div class="navigation"><a href="?">Main Page</a> > <a href="?&game='.$game.'">'.colored($game,$games,$colors,$colors_enabled).'</a> > <b>Build '.$build.'</b></div>';
 	$result = mysql_query("SELECT * FROM versions WHERE game='$game' AND build='$build'");
 	if (mysql_num_rows($result) == 0)
 		mysql_query("INSERT INTO versions (game, build, date, accessed) VALUES ('$game','$build', NOW(), '1')");
@@ -106,7 +105,7 @@ if(is_null($game) || !isset($games[$game])) {
 	echo '</center></td></tr>';
 	echo '</table></center>';
 	echo '<center><table>
-			<tr><th>MPRO Image Downloader (<a href="https://github.com/Mihapro/MPRO-Image-Downloader">Repository</a>)</th></tr>
+			<tr><th>MPRO Image Downloader (<a href="http://www.box.com/shared/cyqtv5klon">download</a>)</th></tr>
 			<tr><td>'.(isset($hash_unavailable[$game]) ? '<font color=red>Not available: </font>'.($hash_unavailable[$game] ? $hash_unavailable[$game] : '<no message given>') : '<a href="hash.php?g='.$game.'&v='.$build.'">'.$games[$game][1].'.txt</a> (save target as, rename to <i>'.$games[$game][1].'.txt</i>)').'</td></tr>
 		</table></center>';
 }

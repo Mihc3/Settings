@@ -1,42 +1,38 @@
--- Copyright (c) Settings (https://github.com/Mihapro/Settings) --
-/*
-Navicat MySQL Data Transfer
+-- --------------------------------------------------------
+-- Host:                         127.0.0.1
+-- Server version:               5.5.27 - MySQL Community Server (GPL)
+-- Server OS:                    Win32
+-- HeidiSQL version:             7.0.0.4053
+-- Date/time:                    2013-05-05 01:04:53
+-- --------------------------------------------------------
 
-Source Server         : Miha-PC MySQL
-Source Server Version : 50508
-Source Host           : localhost:3306
-Source Database       : web
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET NAMES utf8 */;
+/*!40014 SET FOREIGN_KEY_CHECKS=0 */;
 
-Target Server Type    : MYSQL
-Target Server Version : 50508
-File Encoding         : 65001
-
-Date: 2011-12-24 12:06:35
-*/
-
-SET FOREIGN_KEY_CHECKS=0;
-
--- ----------------------------
--- Table structure for `versions`
--- ----------------------------
+-- Dumping structure for table web.versions
 DROP TABLE IF EXISTS `versions`;
-CREATE TABLE `versions` (
+CREATE TABLE IF NOT EXISTS `versions` (
   `game` int(11) NOT NULL DEFAULT '0',
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `build` text,
   `date` datetime DEFAULT NULL,
   `accessed` int(11) DEFAULT '0',
   PRIMARY KEY (`game`,`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
 
--- ----------------------------
--- Records of versions
--- ----------------------------
-
-INSERT INTO `versions` VALUES ('0', '1', '80027', '2011-12-28 00:00:00', '0');
-INSERT INTO `versions` VALUES ('1', '1', '40463', '2011-12-24 00:00:00', '0');
-INSERT INTO `versions` VALUES ('2', '1', 'v31852', '2011-12-24 00:00:00', '0');
-INSERT INTO `versions` VALUES ('3', '1', 'v146514', '2011-12-28 00:00:00', '0');
-INSERT INTO `versions` VALUES ('4', '1', '1340', '2011-12-24 00:00:00', '0');
-INSERT INTO `versions` VALUES ('5', '1', 'v84768', '2011-12-24 00:00:00', '0');
-INSERT INTO `versions` VALUES ('6', '1', '17433', '2011-12-24 00:00:00', '0');
+-- Dumping data for table web.versions: 7 rows
+DELETE FROM `versions`;
+/*!40000 ALTER TABLE `versions` DISABLE KEYS */;
+INSERT INTO `versions` (`game`, `id`, `build`, `date`, `accessed`) VALUES
+	(0, 0, '777869e', '2013-5-5 00:00:00', 0),
+	(1, 0, '107784', '2013-5-5 00:00:00', 0),
+	(2, 0, 'v33202', '2013-5-5 00:00:00', 0),
+	(3, 0, 'v293294', '2013-5-5 00:00:00', 0),
+	(4, 0, '1839', '2013-5-5 00:00:00', 0),
+	(5, 0, 'v84768', '2013-5-5 00:00:00', 0),
+	(6, 0, '58120', '2013-5-5 00:00:00', 0),
+	(7, 0, '56179', '2013-5-5 00:00:00', 0);
+/*!40000 ALTER TABLE `versions` ENABLE KEYS */;
+/*!40014 SET FOREIGN_KEY_CHECKS=1 */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

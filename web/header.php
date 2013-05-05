@@ -85,6 +85,12 @@ a#e {
 a#d {
 	color: red;
 }
+div.navigation {
+	padding: 1px;
+	text-align: left;
+	font-size: 10px;
+	
+}
 </style>
 </head>
 <body>

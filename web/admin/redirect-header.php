@@ -2,7 +2,7 @@
 <html>
 <head>
 <title>Settings</title>
-<meta http-equiv="refresh" content="3">
+<meta http-equiv="refresh" content="3,?">
 <style type="text/css">
 body,td {
 	font-family: Arial, Sans-Serif;
